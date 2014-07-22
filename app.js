@@ -37,7 +37,8 @@ fs.readFile('./public/data.txt', 'utf-8', function(err, fileContents) {
 
 app.get('/:filename', function(req, res) {
 	var filename = req.params.filename;
-	var fileData = fs.readFileSync('./public/' + filename);
+	var fileData = fs.readFileSync('./public/' + filename, 'utf-8');
+	res.header('Content-Type', 'text/html');
 	res.send(fileData);
 });
 
